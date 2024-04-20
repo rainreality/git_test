@@ -39,17 +39,21 @@
         const spanElement = document.createElement("span");
         const newButton = document.createElement("button");
         const inputText = itemInput.value;
-        itemInput.value = '';
-        spanElement.textContent = `${inputText}`;
-        newButton.textContent = 'Delete';
-        newListItem.appendChild(spanElement);
-        newListItem.appendChild(newButton);
-        list.appendChild(newListItem);
-        newButton.addEventListener("click", () => {
+        if (inputText === '') {
+          alert("Enter an item before pressing 'Add Item' button");
+        } else {
+          itemInput.value = '';
+          spanElement.textContent = `${inputText}`;
+          newButton.textContent = 'Delete';
+          newListItem.appendChild(spanElement);
+          newListItem.appendChild(newButton);
+          list.appendChild(newListItem);
+          newButton.addEventListener("click", () => {
           list.removeChild(newListItem);
           document.getElementById("item").focus();
         });
         document.getElementById("item").focus();
+        }
       });
       
     </script>
